@@ -1,6 +1,5 @@
 import React from "react";
 
-
 import Aboutclass from "./Aboutclass";
  
 
@@ -32,6 +31,7 @@ render()
     return(
 
         <div className="about">
+            
             <div className="fun">
             <h1>{name2}</h1>
             </div >

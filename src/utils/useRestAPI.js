@@ -30,7 +30,7 @@ const useResAPI = ()=>
             console.log(json);
           }
 
-          return [ListOfRes,searchedres];
+          return [ListOfRes,searchedres,setsearchedres];
 }
 
 export default useResAPI;

@@ -1,8 +1,16 @@
+import { useDispatch } from "react-redux";
+import { addItem } from "../utils/cartSlice";
+
+
+
 const Catitems = ({catitems})=>
 {
+
+const dispatch = useDispatch();
+
     return (
         <ul className="res-menu-items">
-
+  
         {
           catitems.itemCards.map((item)=>
       (
@@ -18,7 +26,10 @@ const Catitems = ({catitems})=>
       
              </div>
 
-              <div><img className="menu-item-img" src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/"+item.card.info.imageId}/></div>
+              <div className="menu-img">
+                <img className="menu-item-img" src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/"+item.card.info.imageId}/>
+                <button className="add" onClick={()=>dispatch(addItem(item))}>Add+</button>
+                </div>
               </div>
              
           </li>

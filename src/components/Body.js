@@ -1,9 +1,10 @@
 import FoodCardComponent from './FoodCardComponent';
-import { useState , useEffect} from 'react';
+import { useState , useEffect,useContext} from 'react';
 import { Link } from 'react-router-dom';
 import Shimmerui from './Shimmerui';
 import useOnlineStatus from '../utils/useOnlineStatus';
 import useResAPI from '../utils/useRestAPI';
+import UserContext from '../utils/userContext';
 
 const Body = () =>
     {
@@ -37,8 +38,9 @@ const Body = () =>
           }
 
 */
+    const {setusername} = useContext(UserContext);
 
-    const [ListOfRes,searchedres] = useResAPI();
+    const [ListOfRes,searchedres,setsearchedres] = useResAPI();
 
           const online = useOnlineStatus();
           console.log(online);
@@ -69,7 +71,7 @@ const Body = () =>
                 }
               }>Search</button>
 
-<button className='topRate-btn' onClick={()=>
+             <button className='topRate-btn' onClick={()=>
                 {
                   const filteredRes =  ListOfRes.filter((res)=> res.info.avgRating > 4.4);
                   console.log("topRated:-");
@@ -77,7 +79,11 @@ const Body = () =>
                   setsearchedres(filteredRes);
                 }}>Top RATED Restaurants</button>
            
-             
+           
+              <label>User Name : </label>
+              <input type='text' placeholder='user name' onChange={(e)=>setusername(e.target.value)} />
+           
+
             </div>
         
                <div className="restarunts">

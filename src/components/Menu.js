@@ -11,6 +11,8 @@ const Menu = ()=>
     const {resid} = useParams();
 
    const menuobj = useResMenuAPI(resid);
+   const [indexno,setindexno]=useState(null);
+//    const [close,setclose]=useState();
        
 
     if (menuobj === null){
@@ -25,9 +27,12 @@ const Menu = ()=>
     console.log(catfilter);
     return (
 
-        catfilter.map((cat)=>
+        catfilter.map((cat,index)=>
         {
-               return <Accordian key = {cat.card.card.title} cat={cat.card.card}/>
+               return <Accordian key = {cat.card.card.title} cat={cat.card.card}
+              show={index===indexno?true:false}
+              setindexno={setindexno} 
+              index={index}/>
         })
             
            );
